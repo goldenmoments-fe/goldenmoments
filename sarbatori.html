@@ -1,354 +1,368 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Golden Moments – Crăciun & Revelion</title>
-  <style>
-    :root {
-      --gold: #d4a017;
-      --gold-soft: #f5e3a3;
-      --bg: #fffdf7;
-      --text: #222222;
-    }
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+  <!-- Dacă ai style.css, îl poți păstra pentru fonturi / culori globale -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* === PAGINĂ SPECIALĂ DE SĂRBĂTORI === */
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #fff7e0 0%, #fffdf7 40%, #ffffff 100%);
-      color: var(--text);
+      color: #fff;
+      background: radial-gradient(circle at top, #3b1430 0%, #050814 55%, #020308 100%);
+      overflow-x: hidden;
     }
 
-    header {
-      border-bottom: 1px solid #efe4c8;
-      background: rgba(255, 253, 247, 0.96);
-      backdrop-filter: blur(6px);
-      position: sticky;
+    .snow-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+      background-image: radial-gradient(#ffffff 1px, transparent 1px);
+      background-size: 3px 3px;
+      animation: snowfall 40s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes snowfall {
+      0% { transform: translateY(-10px); }
+      100% { transform: translateY(40px); }
+    }
+
+    .festive-lights {
+      position: fixed;
       top: 0;
-      z-index: 10;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-image:
+        radial-gradient(circle at 5% 50%, #ff4d4d 0 8px, transparent 9px),
+        radial-gradient(circle at 20% 50%, #ffd86b 0 8px, transparent 9px),
+        radial-gradient(circle at 35% 50%, #7fffd4 0 8px, transparent 9px),
+        radial-gradient(circle at 50% 50%, #ff9af5 0 8px, transparent 9px),
+        radial-gradient(circle at 65% 50%, #6be3ff 0 8px, transparent 9px),
+        radial-gradient(circle at 80% 50%, #ffb347 0 8px, transparent 9px),
+        radial-gradient(circle at 95% 50%, #ffffff 0 8px, transparent 9px);
+      background-repeat: no-repeat;
+      background-size: 120px 70px;
+      animation: lights-wave 2.8s ease-in-out infinite alternate;
+      z-index: 3;
     }
 
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+    @keyframes lights-wave {
+      0% { filter: brightness(0.8); transform: translateY(0); }
+      100% { filter: brightness(1.3); transform: translateY(4px); }
     }
 
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-wrap img {
-      height: 50px;
-      width: auto;
-      border-radius: 12px;
-    }
-
-    .brand-text {
-      line-height: 1.1;
-    }
-
-    .brand-text h1 {
-      font-size: 1rem;
-      letter-spacing: 0.15em;
-      margin: 0;
-      color: var(--gold);
-    }
-
-    .brand-text p {
-      margin: 0;
-      font-size: 0.78rem;
-      font-style: italic;
-    }
-
-    nav a {
-      margin-left: 14px;
-      text-decoration: none;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #555;
-      padding-bottom: 3px;
-      border-bottom: 2px solid transparent;
-    }
-
-    nav a:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-
-    .xmas-hero {
-      margin-top: 20px;
-      padding: 26px 20px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #fff7e5 0%, #fffaf0 40%, #ffffff 100%);
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 20px;
-      align-items: center;
-    }
-
-    .xmas-hero h2 {
-      margin-top: 0;
-      font-size: 1.9rem;
-      color: #b33b2e;
-    }
-
-    .xmas-hero p {
-      margin-top: 8px;
-      line-height: 1.6;
-    }
-
-    .xmas-pill {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: #fff0e0;
-      color: #b33b2e;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .xmas-side {
+    .winter-hero {
+      position: relative;
+      z-index: 2;
+      padding: 110px 20px 60px;
       text-align: center;
     }
 
-    .xmas-side img {
-      max-width: 200px;
-      width: 100%;
-      height: auto;
-      border-radius: 999px;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
-    }
-
-    h3 {
-      color: var(--gold);
-      margin-top: 26px;
+    .winter-hero h1 {
+      font-size: clamp(2.4rem, 4vw, 3rem);
+      color: #ffd86b;
+      text-shadow: 0 0 18px rgba(255, 215, 128, 0.9);
       margin-bottom: 10px;
-      font-size: 1.3rem;
     }
 
-    .cards {
+    .winter-hero p {
+      max-width: 650px;
+      margin: 0 auto 24px;
+      font-size: 1.02rem;
+      color: #f6f1ff;
+    }
+
+    .finny-festiv {
+      width: 200px;
+      max-width: 55vw;
+      filter: drop-shadow(0 0 22px rgba(255, 215, 0, 0.8));
+      margin-bottom: 16px;
+      border-radius: 50%;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: #ffe6a6;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-hero {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ffd86b, #ff9f43);
+      color: #3d2300;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+
+    .btn-hero:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .section {
+      position: relative;
+      z-index: 2;
+      padding: 10px 18px 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #ffe39a;
+      margin-bottom: 10px;
+    }
+
+    .section p.section-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 25px;
+      color: #f0e3ff;
+      font-size: 0.98rem;
+    }
+
+    .pachete-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 12px;
+      gap: 20px;
     }
 
-    .card {
-      background: #fffdf9;
-      border-radius: 14px;
-      border: 1px solid #f0e3c9;
-      padding: 14px 16px;
-      font-size: 0.93rem;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+    .card-pachet {
+      background: radial-gradient(circle at top, rgba(255,255,255,0.08), rgba(0,0,0,0.9));
+      border-radius: 18px;
+      padding: 18px 16px 16px;
+      border: 1px solid rgba(255, 215, 128, 0.6);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     }
 
-    .card h4 {
-      margin: 0 0 6px;
-      font-size: 1.05rem;
-      color: #b33b2e;
+    .card-pachet h3 {
+      margin: 0 0 4px;
+      font-size: 1.2rem;
+      color: #ffe7aa;
     }
 
-    .card ul {
-      margin: 8px 0 0;
-      padding-left: 18px;
+    .card-pachet .tagline {
+      font-size: 0.86rem;
+      color: #f8d1ff;
+      margin-bottom: 10px;
+    }
+
+    .card-pachet ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       font-size: 0.9rem;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-top: 14px;
+    .card-pachet ul li {
+      margin: 4px 0;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
     }
 
-    .gallery-item {
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid #f0e3c9;
-      background: #fffdf9;
+    .card-pachet ul li::before {
+      content: "•";
+      color: #ffd86b;
+      margin-top: 1px;
     }
 
-    .gallery-item img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .xmas-note {
-      margin-top: 6px;
-      font-size: 0.8rem;
-      color: #777;
-      font-style: italic;
-    }
-
-    .back-link {
-      margin-top: 26px;
+    .card-ribbon {
       display: inline-block;
-      text-decoration: none;
-      font-size: 0.9rem;
-      color: #7a6221;
+      margin-bottom: 6px;
+      padding: 3px 10px;
       border-radius: 999px;
-      border: 1px solid #e5c981;
-      padding: 8px 16px;
-      background: #fffdf7;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 215, 128, 0.7);
+      color: #ffe7b5;
     }
 
-    .back-link:hover {
-      background: #fff7df;
+    .traditii-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .trad-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 16px;
+      padding: 14px 14px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.9rem;
+    }
+
+    .trad-card h3 {
+      margin: 0 0 6px;
+      color: #ffe7aa;
+      font-size: 1.02rem;
+    }
+
+    .trad-card p {
+      margin: 0;
+      color: #f4eaff;
     }
 
     footer {
-      border-top: 1px solid #efe4c8;
-      background: #fffaf0;
-      margin-top: 30px;
-    }
-
-    .footer-bottom {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      font-size: 0.8rem;
-      color: #777;
-      padding: 10px 10px 14px;
+      padding: 18px 10px 30px;
+      font-size: 0.82rem;
+      color: #f4e9ff;
+      opacity: 0.85;
     }
 
-    @media (max-width: 750px) {
-      .xmas-hero {
-        grid-template-columns: 1fr;
-      }
+    footer a {
+      color: #ffd86b;
+      text-decoration: none;
+      font-weight: 600;
+    }
 
-      nav {
-        display: none; /* simplificăm pe mobil pentru pagina asta */
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .winter-hero {
+        padding-top: 95px;
       }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="nav-inner">
-      <div class="logo-wrap">
-        <img src="sigla.png" alt="Golden Moments Logo" />
-        <div class="brand-text">
-          <h1>GOLDEN MOMENTS</h1>
-          <p>Crăciun &amp; Revelion · firmă de exercițiu</p>
-        </div>
-      </div>
-      <nav>
-        <a href="index.html#despre">Despre</a>
-        <a href="index.html#pachete">Pachete</a>
-        <a href="index.html#rezervari">Rezervări</a>
-      </nav>
+
+  <!-- ninsoare + luminițe -->
+  <div class="snow-layer"></div>
+  <div class="festive-lights"></div>
+
+  <!-- HERO CU FINNY -->
+  <section class="winter-hero">
+    <div class="hero-badge">Pagina specială de sărbători</div>
+    <img src="finny.png" alt="Mascota Finny – Golden Moments" class="finny-festiv">
+    <h1>Crăciun &amp; Revelion cu Golden Moments</h1>
+    <p>
+      Finny veghează asupra fiecărui detaliu: de la bradul împodobit și decorurile
+      tradiționale, până la candy bar-urile colorate și ringul de dans plin de energie.
+    </p>
+    <a href="index.html#rezervari" class="btn-hero">Rezervă pachetul de sărbători</a>
+  </section>
+
+  <!-- PACHETE DE SĂRBĂTORI -->
+  <section class="section" id="pachete-sarbatori">
+    <h2>Pachete speciale de iarnă</h2>
+    <p class="section-intro">
+      Alege pachetul potrivit pentru atmosfera pe care ți-o dorești: tradițional, elegant
+      sau plin de artificii și lumini la trecerea dintre ani.
+    </p>
+
+    <div class="pachete-grid">
+      <article class="card-pachet">
+        <div class="card-ribbon">Crăciun tradițional</div>
+        <h3>Pachet &bdquo;Colind de Aur&rdquo;</h3>
+        <p class="tagline">Atmosferă caldă, cu miros de cozonac și brazi împodobiți.</p>
+        <ul>
+          <li>Decor în culori roșu–auriu, cu globuri și coronițe de brad.</li>
+          <li>Candy bar tematic cu turtă dulce, brioșe și bețe de scorțișoară.</li>
+          <li>Photo corner cu motive tradiționale românești.</li>
+          <li>Muzică de fundal cu colinde și luminițe calde.</li>
+        </ul>
+      </article>
+
+      <article class="card-pachet">
+        <div class="card-ribbon">Crăciun modern</div>
+        <h3>Pachet &bdquo;Winter Wonderland&rdquo;</h3>
+        <p class="tagline">Alb, argintiu și accente de albastru pentru un look de poveste.</p>
+        <ul>
+          <li>Decor minimalist cu fulgi de zăpadă, ghirlande luminoase și sclipiri aurii.</li>
+          <li>Candy bar alb &amp; pastel cu macarons și mousse-uri fine.</li>
+          <li>Colț special pentru poze cu Finny și lumini LED.</li>
+          <li>Posibilitatea de a integra fântână de ciocolată albă.</li>
+        </ul>
+      </article>
+
+      <article class="card-pachet">
+        <div class="card-ribbon">Noaptea dintre ani</div>
+        <h3>Pachet &bdquo;Golden New Year&rdquo;</h3>
+        <p class="tagline">Revelion cu strălucire, confetti și artificii de interior.</p>
+        <ul>
+          <li>Decor glamour în negru–auriu, cu lumânări și sclipici.</li>
+          <li>Photo corner cu props-uri haioase pentru selfie-uri de grup.</li>
+          <li>Bar de șampanie mocktail pentru un toast festiv.</li>
+          <li>Programare rapidă prin formularul de rezervări Golden Moments.</li>
+        </ul>
+      </article>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="xmas-hero">
-      <div>
-        <h2>Magia evenimentelor de Crăciun &amp; Revelion</h2>
+  <!-- MOTIVE TRADIȚIONALE & DECORURI -->
+  <section class="section" id="traditii">
+    <h2>Motive tradiționale &amp; decoruri colorate</h2>
+    <p class="section-intro">
+      Integram elemente tradiționale românești în decorul modern: ii stilizate, motive
+      populare, coronițe din brad natural și aranjamente cu mere roșii și scorțișoară.
+    </p>
+
+    <div class="traditii-grid">
+      <article class="trad-card">
+        <h3>Colț tradițional românesc</h3>
         <p>
-          Secțiunea de Sărbători a firmei de exercițiu <strong>Golden Moments</strong>
-          prezintă modul în care am putea organiza evenimente de iarnă: petreceri de
-          Crăciun, seri tematice, baluri de Revelion sau seri festive la școală.
+          Ștergare cu motive populare, coșulețe cu nuci și mere, coronițe din crenguțe de
+          brad și lumânări parfumate – perfecte pentru poze de familie.
         </p>
-        <span class="xmas-pill">Crăciun · Revelion · Atmosferă festivă</span>
-      </div>
-      <div class="xmas-side">
-        <img src="finny_christmas.png" alt="Mascota Finny in stil festiv" />
-      </div>
-    </section>
-
-    <section>
-      <h3>Pachete tematice de iarnă (simulare)</h3>
-      <div class="cards">
-        <div class="card">
-          <h4>Winter Golden Party</h4>
-          <ul>
-            <li>Decor cu lumini calde, elemente aurii și accente roșu-verde</li>
-            <li>Candy bar de iarnă (biscuiți, acadele, mini-prăjituri)</li>
-            <li>Photo corner cu tematică „Winter Wonderland”</li>
-            <li>Playlist tematic și momente de animație</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4>Crăciun la școală</h4>
-          <ul>
-            <li>Decor sală pentru serbare sau spectacol</li>
-            <li>Colțișor pentru poze cu Moș Crăciun</li>
-            <li>Zona de cadouri &amp; schimb de felicitări</li>
-            <li>Organizare program artistic (simulat)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4>Revelion Golden Moments</h4>
-          <ul>
-            <li>Decor elegant pentru petrecere de Anul Nou</li>
-            <li>Photo corner cu props de Revelion (pălării, ochelari, mesaje)</li>
-            <li>Numărătoare inversă simulată &amp; moment festiv</li>
-            <li>Coordonare program de jocuri și activități</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h3>Exemple de decor (imagini generice)</h3>
-      <p>
-        În această secțiune pot fi adăugate fotografii cu decoruri de iarnă,
-        candy bar tematic, brad împodobit și zone de fotografii pentru Crăciun și
-        Revelion.
-      </p>
-      <div class="gallery">
-        <!-- Aici poți pune imaginile tale reale de iarnă, de exemplu: -->
-        <!--
-        <div class="gallery-item">
-          <img src="images/xmas1.jpeg" alt="Decor de Crăciun Golden Moments">
-        </div>
-        -->
-        <div class="gallery-item">
-          <img src="images/imagine1.jpeg" alt="Decor festiv de eveniment">
-        </div>
-        <div class="gallery-item">
-          <img src="images/imagine2.jpeg" alt="Mese decorate de sărbători">
-        </div>
-        <div class="gallery-item">
-          <img src="images/imagine3.jpeg" alt="Lumini și atmosferă de iarnă">
-        </div>
-      </div>
-      <p class="xmas-note">
-        Fotografiile sunt ilustrative și fac parte din proiectul educațional.
-      </p>
-
-      <a class="back-link" href="index.html">⟵ Înapoi la pagina principală</a>
-    </section>
-  </main>
+      </article>
+      <article class="trad-card">
+        <h3>Decor de poveste pentru copii</h3>
+        <p>
+          Colț cu Moș Crăciun, reni, oameni de zăpadă și zone de joacă cu baloane colorate,
+          potrivite pentru serbări și petreceri tematice.
+        </p>
+      </article>
+      <article class="trad-card">
+        <h3>Revelion elegant</h3>
+        <p>
+          Mese cu fețe de masă satinate, scaune cu huse aurii, aranjamente florale albe și
+          perdele de lumini pentru un final de an spectaculos.
+        </p>
+      </article>
+    </div>
+  </section>
 
   <footer>
-    <div class="footer-bottom">
-      GOLDEN MOMENTS – firmă de exercițiu · Secțiune specială Crăciun &amp; Revelion.
-      Nu se efectuează vânzări reale.
-    </div>
+    &laquo;Înapoi la site-ul principal&raquo; –
+    <a href="index.html">Golden Moments</a>
   </footer>
+
 </body>
 </html>
