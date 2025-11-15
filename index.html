@@ -168,6 +168,56 @@
       color: #7a6221;
     }
 
+        .hero-buttons {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-secondary {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.18s;
+    }
+
+    .btn-hero-primary {
+      background: linear-gradient(135deg, #d4af37, #f5d77a);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-hero-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+    }
+
+    .btn-hero-secondary {
+      background: #fffdf7;
+      color: #7a6221;
+      border-color: #e5c981;
+    }
+
+    .btn-hero-secondary:hover {
+      background: #fff7df;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 750px) {
+      .hero-buttons {
+        justify-content: flex-start;
+      }
+    }
+
     /* GRID – CARDURI */
     .cards {
       display: grid;
@@ -858,20 +908,26 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero">
+       <section class="hero">
       <div class="hero-text">
-        <h2>Evenimente perfecte, momente memorabile</h2>
+        <h2>Evenimente perfecte, momente memorabile.</h2>
         <p>
           <strong>Golden Moments</strong> este o firmă de exercițiu
           specializată în organizarea de evenimente premium – de la ceremonii
           elegante până la conferințe, gale și lansări deosebite.
         </p>
         <span class="pill">Firmă de exercițiu · Organizare evenimente</span>
+
+        <div class="hero-buttons">
+          <a href="#rezervari" class="btn-hero-primary">Rezervă un eveniment</a>
+          <a href="sarbatori.html" class="btn-hero-secondary">Crăciun &amp; Revelion</a>
+        </div>
       </div>
       <div class="hero-logo">
         <img src="sigla.png" alt="Golden Moments" />
       </div>
     </section>
+
 
     <!-- DESPRE -->
     <section id="despre">
@@ -1497,6 +1553,7 @@ Accesorii amuzante pentru fotografii – mustăți, ochelari, pălării, pancart
   </footer>
 </body>
 </html>
+
 
 
 
