@@ -107,6 +107,12 @@
       }
     }
 
+    /* Fulgi mici */
+.snowflake.small {
+  font-size: 0.55rem;
+  opacity: 0.7;
+}
+
     /* LUMINIȚE */
     .lights-row {
       display: flex;
@@ -506,19 +512,68 @@
     }
   </style>
 </head>
+  <!-- 🎵 Music Player -->
+<div id="music-player" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+">
+  <button id="playMusic" style="
+    background: linear-gradient(135deg, #ffd86b, #ffae42);
+    color:#4b3200;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow:0 6px 15px rgba(0,0,0,0.25);
+    cursor:pointer;
+  ">
+    🎄 Pornește Muzica
+  </button>
+
+  <audio id="bgMusic">
+    <source src="melodie.mp3" type="audio/mp3">
+  </audio>
+</div>
+
+<script>
+document.getElementById("playMusic").addEventListener("click", function() {
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.5;
+  music.play();
+  this.textContent = "🎶 Muzica rulează";
+});
+</script>
+
 <body>
 
   <!-- Fulgi de nea -->
-  <div class="snowflakes" aria-hidden="true">
-    <div class="snowflake" style="left: 5%; animation-duration: 10s; animation-delay: 0s;">❄</div>
-    <div class="snowflake" style="left: 15%; animation-duration: 12s; animation-delay: 2s;">✦</div>
-    <div class="snowflake" style="left: 28%; animation-duration: 11s; animation-delay: 1s;">❅</div>
-    <div class="snowflake" style="left: 40%; animation-duration: 13s; animation-delay: 3s;">✧</div>
-    <div class="snowflake" style="left: 55%; animation-duration: 9s;  animation-delay: 0.5s;">❄</div>
-    <div class="snowflake" style="left: 68%; animation-duration: 14s; animation-delay: 2.5s;">✦</div>
-    <div class="snowflake" style="left: 80%; animation-duration: 10s; animation-delay: 1.5s;">❅</div>
-    <div class="snowflake" style="left: 93%; animation-duration: 12s; animation-delay: 0.8s;">✧</div>
-  </div>
+<!-- ❄❄❄ MULTI-LAYER SNOW EFFECT ❄❄❄ -->
+<div class="snowflakes" aria-hidden="true">
+  <!-- Layer 1 – fulgi mari -->
+  <div class="snowflake" style="left:3%;animation-duration:12s;animation-delay:0s;">❄</div>
+  <div class="snowflake" style="left:12%;animation-duration:15s;animation-delay:1s;">❅</div>
+  <div class="snowflake" style="left:24%;animation-duration:13s;animation-delay:2s;">✦</div>
+  <div class="snowflake" style="left:35%;animation-duration:17s;animation-delay:0.5s;">❄</div>
+  <div class="snowflake" style="left:48%;animation-duration:14s;animation-delay:1.5s;">❅</div>
+  <div class="snowflake" style="left:60%;animation-duration:16s;animation-delay:2.5s;">✧</div>
+  <div class="snowflake" style="left:72%;animation-duration:12s;animation-delay:0.8s;">❄</div>
+  <div class="snowflake" style="left:88%;animation-duration:15s;animation-delay:1.2s;">❅</div>
+
+  <!-- Layer 2 – fulgi mici, mulți -->
+  <div class="snowflake small" style="left:5%;animation-duration:18s;animation-delay:2s;">•</div>
+  <div class="snowflake small" style="left:10%;animation-duration:20s;animation-delay:3s;">•</div>
+  <div class="snowflake small" style="left:18%;animation-duration:22s;animation-delay:1s;">•</div>
+  <div class="snowflake small" style="left:27%;animation-duration:19s;animation-delay:0.5s;">•</div>
+  <div class="snowflake small" style="left:42%;animation-duration:23s;animation-delay:2.2s;">•</div>
+  <div class="snowflake small" style="left:55%;animation-duration:21s;animation-delay:1.4s;">•</div>
+  <div class="snowflake small" style="left:68%;animation-duration:24s;animation-delay:2.9s;">•</div>
+  <div class="snowflake small" style="left:80%;animation-duration:18s;animation-delay:0.9s;">•</div>
+  <div class="snowflake small" style="left:92%;animation-duration:20s;animation-delay:1.3s;">•</div>
+</div>
+
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top">
