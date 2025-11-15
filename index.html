@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golden Moments – Evenimente perfecte, momente memorabile</title>
+
+  <style>
+    :root {
+      --gold: #d4a017;
+      --gold-soft: #f5e3a3;
+      --bg: #fffdf7;
+      --text: #222222;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 253, 247, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #efe4c8;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-wrap img {
+      height: 54px;
+      width: auto;
+      border-radius: 12px;
+    }
+
+    .brand-text {
+      line-height: 1.1;
+    }
+
+    .brand-text h1 {
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      margin: 0;
+      color: var(--gold);
+    }
+
+    .brand-text p {
+      margin: 0;
+      font-size: 0.8rem;
+      font-style: italic;
+    }
+
+    nav a {
+      margin-left: 14px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #555;
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* CONȚINUT GENERAL */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    section {
+      margin: 40px 0;
+      padding: 24px 20px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: var(--gold);
+      font-size: 1.4rem;
+      border-bottom: 2px solid var(--gold-soft);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 10px 0 0;
+    }
+
+    /* HERO INTRO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+      background: linear-gradient(
+        135deg,
+        #fffdf7 0%,
+        #fffaf0 40%,
+        #ffffff 100%
+      );
+    }
+
+    .hero-logo {
+      text-align: center;
+    }
+
+    .hero-logo img {
+      max-width: 260px;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+    }
+
+    .hero-text h2 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      color: var(--gold);
+    }
+
+    .hero-text p {
+      margin-top: 8px;
+    }
+
+    .pill {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #7a6221;
+    }
+
+    /* GRID – CARDURI */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .card {
+      background: #fffdf9;
+      border-radius: 14px;
+      border: 1px solid #f0e3c9;
+      padding: 14px 16px;
+      font-size: 0.93rem;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      color: var(--gold);
+    }
+
+    .card p {
+      margin-top: 6px;
+      font-size: 0.9rem;
+    }
+
+    .chip {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #fff7df;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #7a6221;
+    }
+
+    /* GALERIE FOTO */
+    .gallery-info {
+      margin-top: 4px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #f0e3c9;
+      background: #fffdf9;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* MASCOTA */
+    .mascot-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    .mascot-wrap img {
+      max-width: 230px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 20px;
+    }
+
+    .tagline {
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* ORGANIGRAMA & POSTURI */
+    .org-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .org-card {
+      background: #fffdf9;
+      border-radius: 12px;
+      border: 1px solid #f0e3c9;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+    }
+
+    .org-card h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      color: var(--gold);
+    }
+
+    .org-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .org-card li {
+      margin: 3px 0;
+      line-height: 1.4;
+    }
+
+    .org-card strong {
+      font-weight: 600;
+    }
+
+    .org-image {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .org-scroll {
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: 16px;
+      border: 1px solid #f0e3c9;
+      overflow: auto;
+      max-height: 320px;
+      background: #ffffff;
+    }
+
+    .org-scroll img {
+      display: block;
+      /* imaginea rămâne mare, dar o vezi printr-o „fereastră” scrollabilă */
+      width: 1200px; /* ajustează dacă vrei mai mare / mai mic */
+      height: auto;
+    }
+
+    .org-zoom-hint {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 6px;
+    }
+
+    /* SECȚIUNE PROCES */
+    .steps {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 12px;
+    }
+
+    .steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 8px 0;
+      font-size: 0.95rem;
+    }
+
+    .step-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: #7a6221;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .contact-card {
+      background: #fffdf9;
+      border-radius: 14px;
+      border: 1px solid #f0e3c9;
+      padding: 16px 18px;
+      font-size: 0.95rem;
+    }
+
+    .contact-item {
+      margin: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .contact-icon {
+      width: 20px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .contact-text strong {
+      font-weight: 600;
+    }
+
+    .contact-note {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #666;
+      background: #fff7df;
+      border-radius: 10px;
+      padding: 8px 10px;
+      border: 1px dashed #e5c981;
+    }
+
+    .contact-map {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #f0e3c9;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      background: #faf5e8;
+    }
+
+    .map-frame-wrapper {
+      width: 100%;
+      height: 0;
+      padding-bottom: 56%;
+      position: relative;
+    }
+
+    .map-frame-wrapper iframe {
+      border: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-caption {
+      padding: 8px 10px;
+      font-size: 0.8rem;
+      text-align: center;
+      color: #777;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: #777;
+      border-top: 1px solid #efe4c8;
+      background: #fffaf0;
+    }
+
+    @media (max-width: 750px) {
+      .hero,
+      .mascot-wrap,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none; /* simplu pe mobil; se poate îmbunătăți ulterior */
+      }
+
+      .nav-inner {
+        justify-content: center;
+      }
+
+      .org-scroll img {
+        width: 900px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV + LOGO -->
+  <header>
+    <div class="nav-inner">
+      <div class="logo-wrap">
+        <!-- Schimbă numele fișierului dacă este diferit în folderul tău -->
+        <img src="sigla.png" alt="Golden Moments Logo" />
+        <div class="brand-text">
+          <h1>GOLDEN MOMENTS</h1>
+          <p>„Evenimente perfecte, momente memorabile.”</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#despre">Despre</a>
+        <a href="#servicii">Servicii</a>
+        <a href="#evenimente">Evenimente</a>
+        <a href="#galerie">Galerie foto</a>
+        <a href="#mascota">Mascota</a>
+        <a href="#organigrama">Organigramă</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Evenimente perfecte, momente memorabile.</h2>
+        <p>
+          <strong>Golden Moments</strong> este o firmă de exercițiu
+          specializată în organizarea de evenimente premium – de la ceremonii
+          elegante până la conferințe, gale și lansări deosebite.
+        </p>
+        <span class="pill">Firmă de exercițiu · Organizare evenimente</span>
+      </div>
+      <div class="hero-logo">
+        <img src="sigla.png" alt="Golden Moments" />
+      </div>
+    </section>
+
+    <!-- DESPRE -->
+    <section id="despre">
+      <h2>Despre noi</h2>
+      <p>
+        <strong>Golden Moments</strong> își propune să transforme fiecare
+        eveniment într-o experiență unică, elegantă și perfect coordonată.
+        Ne concentrăm pe detalii, atmosferă și emoție, astfel încât fiecare
+        invitat să plece cu o amintire de neuitat.
+      </p>
+    </section>
+
+    <!-- SERVICII -->
+    <section id="servicii">
+      <h2>Serviciile noastre</h2>
+      <p>
+        Ca firmă de organizare de evenimente, acoperim toate etapele: de la idee
+        și planificare, până la decor, logistică și coordonare în ziua
+        evenimentului.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Planificare &amp; concept</h3>
+          <p>
+            Discuție inițială, stabilirea temei, bugetului și a stilului
+            evenimentului. Creăm un concept coerent, adaptat cerințelor
+            clientului.
+          </p>
+          <span class="chip">brief &amp; concept</span>
+        </div>
+
+        <div class="card">
+          <h3>Decor &amp; atmosferă</h3>
+          <p>
+            Propuneri de decor, amenajarea sălii, aranjamente tematice,
+            lumini, candy-bar, photo-corner și colțuri instagramabile.
+          </p>
+          <span class="chip">design de eveniment</span>
+        </div>
+
+        <div class="card">
+          <h3>Coordonare în ziua evenimentului</h3>
+          <p>
+            Echipa Golden Moments se ocupă de desfășurarea evenimentului
+            conform programului stabilit: primirea invitaților, coordonarea
+            furnizorilor, momente-cheie.
+          </p>
+          <span class="chip">supervizare</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPURI DE EVENIMENTE -->
+    <section id="evenimente">
+      <h2>Tipuri de evenimente</h2>
+      <p>
+        Golden Moments organizează evenimente variate, adaptate publicului și
+        ocaziei:
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Evenimente private</h3>
+          <p>
+            Nunți, botezuri, aniversări, petreceri surpriză și alte momente
+            speciale în familie sau între prieteni.
+          </p>
+          <span class="chip">momente personale</span>
+        </div>
+
+        <div class="card">
+          <h3>Evenimente școlare &amp; educaționale</h3>
+          <p>
+            Baluri, festivități, serbări, conferințe școlare, lansări de
+            proiecte educaționale.
+          </p>
+          <span class="chip">proiecte școlare</span>
+        </div>
+
+        <div class="card">
+          <h3>Evenimente corporate</h3>
+          <p>
+            Conferințe, prezentări, workshop-uri, gale de premiere și alte
+            evenimente de imagine și networking.
+          </p>
+          <span class="chip">imagine &amp; brand</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE FOTO -->
+    <section id="galerie">
+      <h2>Galerie foto</h2>
+      <p class="gallery-info">
+        Câteva imagini de inspirație pentru modul în care pot arăta
+        evenimentele Golden Moments. Fotografiile sunt generice și au rol
+        ilustrativ.
+      </p>
+
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="img/galerie1.jpeg" alt="Sală decorată cu lumini albastre și mov" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/galerie2.jpeg" alt="Alee centrală luminată pentru un eveniment elegant" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/galerie3.jpeg" alt="Salon cu candelabre cristal și decor luxury" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/galerie4.jpeg" alt="Scenă și zonă de evenimente cu lumină de spectacol" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/galerie5.jpeg" alt="Decor colorat cu baloane pentru petrecere tematică" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/galerie6.jpeg" alt="Sală de nuntă decorată în stil romantic" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/galerie7.jpeg" alt="Mese elegante cu detalii aurii în aer liber" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/galerie8.jpeg" alt="Masa rotundă decorată cu flori albe și auriu" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/galerie9.jpeg" alt="Sală decorată în nuanțe de mov cu lumini suspendate" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/galerie10.jpeg" alt="Masă festivă rafinată, cu flori albe și auriu" />
+        </div>
+      </div>
+    </section>
+
+<section id="candy-bar" class="serv-section">
+    <h2>Candy Bar</h2>
+    <p>
+        Oferim candy bar-uri personalizate pentru nunți, botezuri, majorate, banchete și evenimente corporate. 
+        Realizăm decoruri în teme variate, cu dulciuri premium și prezentări elegante.
+    </p>
+
+    <div class="gallery-grid">
+        <!-- EXEMPLU: pune aici imaginile tale -->
+        <img src="images/imagine1.jpg" alt="Candy Bar 1">
+        <img src="images/imagine2.jpg" alt="Candy Bar 2">
+        <img src="images/imagine3.jpg" alt="Candy Bar 3">
+        <img src="images/imagine4.jpg" alt="Candy Bar 4">
+        <img src="images/imagine5.jpg" alt="Candy Bar 5">
+    </div>
+</section>
+
+<section id="fantana" class="serv-section">
+    <h2>Fântână de ciocolată</h2>
+    <p>
+        Fântânile noastre de ciocolată sunt ideale pentru orice tip de eveniment și pot fi acompaniate de fructe, 
+        bezele, biscuiți sau alte delicii. Oferim variante cu ciocolată albă, neagră sau cu lapte.
+    </p>
+
+    <div class="gallery-grid">
+        <!-- EXEMPLU: pune aici imaginile tale -->
+        <img src="images/imagine6.jpg" alt="Fântână de ciocolată 1">
+        <img src="images/imagine7.jpg" alt="Fântână de ciocolată 2">
+        <img src="images/imagine8.jpg" alt="Fântână de ciocolată 3">
+        <img src="images/imagine9.jpg" alt="Fântână de ciocolată 4">
+        <img src="images/imagine10.jpg" alt="Fântână de ciocolată 5">
+    </div>
+</section>
+
+<section id="photo" class="serv-section">
+    <h2>Photo Corner</h2>
+    <p>
+Un colț foto decorativ, ideal pentru ca invitații să își facă amintiri frumoase. Mai jos sunt exemple de stiluri pentru Photo Corner.
+</p>
+
+    <div class="gallery-grid">
+        <!-- EXEMPLU: pune aici imaginile tale -->
+        <img src="images/imagine11.jpg" alt="Photo Corner 1">
+        <img src="images/imagine12.jpg" alt="Photo Corner 2">
+        <img src="images/imagine13.jpg" alt="Photo Corner 3">
+        <img src="images/imagine14.jpg" alt="Photo Corner 4">
+        <img src="images/imagine15.jpg" alt="Photo Corner 5">
+    </div>
+</section>
+
+<section id="props" class="serv-section">
+    <h2>Selfie Props</h2>
+    <p>
+Accesorii amuzante pentru fotografii – mustăți, ochelari, pălării, pancarte tematice, mesaje haioase etc.
+
+    <div class="gallery-grid">
+        <!-- EXEMPLU: pune aici imaginile tale -->
+        <img src="images/imagine16.jpg" alt="Selfie Props 1">
+        <img src="images/imagine17.jpg" alt="Selfie Props 2">
+        <img src="images/imagine18.jpg" alt="Selfie Props 3">
+        <img src="images/imagine19.jpg" alt="Selfie Props 4">
+        <img src="images/imagine20.jpg" alt="Selfie Props 5">
+    </div>
+</section>
+
+
+
+    <!-- MASCOTA -->
+    <section id="mascota">
+      <h2>Mascota noastră: Finny</h2>
+      <div class="mascot-wrap">
+        <!-- Schimbă numele fișierului dacă este diferit în folderul tău -->
+        <img src="finny.png" alt="Mascota Finny" />
+        <div>
+          <p class="tagline">Finny – bufnița infinitului de aur</p>
+          <p>
+            Finny este simbolul înțelepciunii și al continuității.
+            Infinitul de pe piept și strălucirea din privire trimit la
+            promisiunea noastră: momente care durează, evenimente care
+            strălucesc.
+          </p>
+          <p>
+            Mascota ne însoțește în comunicare, pe materiale grafice și în
+            prezentările firmei de exercițiu, adăugând un plus de
+            personalitate brandului <strong>Golden Moments</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUM LUCRĂM -->
+    <section id="proces">
+      <h2>Cum lucrăm</h2>
+      <p>
+        Pentru ca fiecare eveniment să fie un succes, urmăm câțiva pași clari
+        de lucru:
+      </p>
+      <ul class="steps">
+        <li>
+          <div class="step-number">1</div>
+          <div>
+            <strong>Întâlnirea inițială</strong><br />
+            Discutăm despre tipul de eveniment, numărul de invitați,
+            preferințe, temă și buget.
+          </div>
+        </li>
+        <li>
+          <div class="step-number">2</div>
+          <div>
+            <strong>Propunere de concept</strong><br />
+            Realizăm o schiță de concept: decor, program, momente speciale,
+            logistică.
+          </div>
+        </li>
+        <li>
+          <div class="step-number">3</div>
+          <div>
+            <strong>Planificare detaliată</strong><br />
+            Stabilim calendarul, furnizorii, repartizarea rolurilor în echipa
+            Golden Moments.
+          </div>
+        </li>
+        <li>
+          <div class="step-number">4</div>
+          <div>
+            <strong>Implementare &amp; coordonare</strong><br />
+            Ne ocupăm de buna desfășurare în ziua evenimentului, astfel încât
+            totul să decurgă conform planului.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ORGANIGRAMA -->
+    <section id="organigrama">
+      <h2>Organigramă și posturi</h2>
+      <p>
+        Structura organizatorică a firmei de exercițiu
+        <strong>Golden Moments</strong> este împărțită pe departamente
+        specializate:
+      </p>
+
+      <div class="org-columns">
+        <div class="org-card">
+          <h3>Conducere</h3>
+          <ul>
+            <li><strong>Director General</strong> – Ciubotaru Roberto</li>
+            <li><strong>Director Adjunct</strong> – Iliuță Dennis</li>
+          </ul>
+        </div>
+
+        <div class="org-card">
+          <h3>Organizare Evenimente</h3>
+          <ul>
+            <li>
+              <strong>Manager Organizare Evenimente</strong> – Ganciu Emilia
+            </li>
+            <li><strong>Coordonator Banqueting</strong> – Errimi Yasmine</li>
+            <li><strong>Supervizor Sală Evenimente</strong> – Asan Cătălin</li>
+          </ul>
+        </div>
+
+        <div class="org-card">
+          <h3>Catering</h3>
+          <ul>
+            <li><strong>Manager Catering</strong> – Guțilă Geanny</li>
+            <li><strong>Bucătar Șef</strong> – Becheanu Alexia</li>
+            <li><strong>Barman</strong> – Ilaș Ștefania</li>
+          </ul>
+        </div>
+
+        <div class="org-card">
+          <h3>Logistică și Tehnic</h3>
+          <ul>
+            <li>
+              <strong>Manager Logistică și Tehnic</strong> – Radu Andrei
+            </li>
+            <li><strong>Tehnician Sonorizare</strong> – Coșoi Adrian</li>
+            <li><strong>Tehnician Lumini</strong> – Puia Mihai</li>
+            <li><strong>Designer Decoruri</strong> – Dobre Amira</li>
+          </ul>
+        </div>
+
+        <div class="org-card">
+          <h3>Marketing și Relații Publice</h3>
+          <ul>
+            <li><strong>Manager Marketing &amp; PR</strong> – Errimi Samiya</li>
+            <li><strong>Specialist Promovare</strong> – Bonteanu Raluca</li>
+            <li><strong>Fotograf / Videograf</strong> – Vreme Sorana</li>
+            <li><strong>Responsabil Relații Clienți</strong> – Ilie Maria</li>
+            <li>
+              <strong>Specialist Contracte &amp; Colaborări</strong> –
+              Georgescu Andreea
+            </li>
+          </ul>
+        </div>
+
+        <div class="org-card">
+          <h3>Financiar-Contabil</h3>
+          <ul>
+            <li><strong>Director Financiar</strong> – Trîncă Isabela</li>
+            <li><strong>Contabil</strong> – Mălăieru Alexandra</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- imaginea mare cu organigrama, în fereastră cu scroll -->
+      <div class="org-image">
+        <div class="org-scroll">
+          <!-- Schimbă numele fișierului dacă e diferit -->
+          <img src="organigrama.png" alt="Organigrama Golden Moments" />
+        </div>
+        <p class="org-zoom-hint">
+          Derulează în interiorul casetei pentru a vedea organigrama în detaliu.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-item">
+            <div class="contact-icon">🏫</div>
+            <div class="contact-text">
+              <strong>Colegiul Tehnologic „Grigore Cerchez”</strong>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-text">
+              Adresă: Calea Șerban Vodă nr. 280, Sector 5, București
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div class="contact-text">
+              E-mail:
+              <a href="mailto:fe.goldenmoments@gmail.com">
+                fe.goldenmoments@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-text">
+              Telefon: 021.336.58.90
+            </div>
+          </div>
+
+          <div class="contact-note">
+            Acesta este un proiect educațional. Nu efectuăm vânzări reale.
+          </div>
+        </div>
+
+        <div class="contact-map">
+          <div class="map-frame-wrapper">
+            <iframe
+              src="https://www.google.com/maps?q=Colegiul%20Tehnologic%20Grigore%20Cerchez%20Bucuresti&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="map-caption">
+            Localizarea Colegiului Tehnologic ”Grigore Cerchez”, București.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    GOLDEN MOMENTS – firmă de exercițiu · „Evenimente perfecte, momente memorabile.”
+  </footer>
+</body>
+</html>
