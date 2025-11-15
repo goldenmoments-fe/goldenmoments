@@ -576,9 +576,10 @@
           <p>„Evenimente perfecte, momente memorabile.”</p>
         </div>
       </div>
-      <nav>
+     <nav>
         <a href="#despre">Despre</a>
         <a href="#servicii">Servicii</a>
+        <a href="#pachete">Pachete</a>
         <a href="#evenimente">Evenimente</a>
         <a href="#galerie">Galerie foto</a>
         <a href="#mascota">Mascota</a>
@@ -658,6 +659,142 @@
       </div>
     </section>
 
+        <!-- PACHETE DE SERVICII -->
+    <section id="pachete">
+      <h2>Pachete de servicii</h2>
+      <p class="pachete-intro">
+        Pachetele Golden Moments sunt orientative și pot fi adaptate în funcție de tema,
+        numărul de invitați și bugetul evenimentului. Fiind o firmă de exercițiu, toate
+        prețurile și ofertele sunt simulate în scop educațional.
+      </p>
+
+      <div class="cards packages">
+        <!-- Pachet GOLDEN -->
+        <div class="card package-card">
+          <div class="package-badge">Recomandat</div>
+          <div class="package-label">Pachet GOLDEN</div>
+          <div class="package-price">Pachet complet eveniment</div>
+          <p class="package-tagline">
+            Pentru evenimente memorabile, cu totul inclus.
+          </p>
+          <ul class="package-features">
+            <li>Consultanță și planificare completă a evenimentului</li>
+            <li>Decor sală &amp; aranjamente tematice</li>
+            <li>Candy bar personalizat</li>
+            <li>Fântână de ciocolată</li>
+            <li>Photo corner + props haioase pentru invitați</li>
+            <li>Coordonare în ziua evenimentului</li>
+          </ul>
+        </div>
+
+        <!-- Pachet PREMIUM -->
+        <div class="card package-card">
+          <div class="package-label">Pachet PREMIUM</div>
+          <div class="package-price">Decor &amp; atmosferă</div>
+          <p class="package-tagline">
+            Ideal pentru evenimente elegante, cu accent pe imagine.
+          </p>
+          <ul class="package-features">
+            <li>Consultanță pentru stabilirea temei și culorilor</li>
+            <li>Decor sală (mese, scenă, colț foto simplu)</li>
+            <li>Aranjamente de bază pentru candy bar</li>
+            <li>Coordonare momente-cheie în ziua evenimentului</li>
+          </ul>
+        </div>
+
+        <!-- Pachet DELUXE -->
+        <div class="card package-card">
+          <div class="package-label">Pachet DELUXE</div>
+          <div class="package-price">Experiență personalizată</div>
+          <p class="package-tagline">
+            Pachet flexibil pentru evenimente cu cerințe speciale.
+          </p>
+          <ul class="package-features">
+            <li>Planificare personalizată în funcție de concept</li>
+            <li>Posibilitatea combinării serviciilor (decor, candy bar, photo corner)</li>
+            <li>Adaptare pentru evenimente școlare sau corporate</li>
+            <li>Programare prin formularul de rezervări</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+        /* PACHETE DE SERVICII */
+    #pachete h2 {
+      text-align: center;
+      width: 100%;
+    }
+
+    #pachete .pachete-intro {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .packages {
+      margin-top: 18px;
+    }
+
+    .card.package-card {
+      border-width: 2px;
+      position: relative;
+    }
+
+    .package-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #b3902f;
+      margin-bottom: 4px;
+    }
+
+    .package-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 4px 0 8px;
+      color: #333;
+    }
+
+    .package-tagline {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .package-features {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      font-size: 0.88rem;
+    }
+
+    .package-features li {
+      margin: 3px 0;
+    }
+
+    .package-features li::before {
+      content: "• ";
+      color: #c9a13d;
+      font-weight: 700;
+      margin-right: 3px;
+    }
+
+    .package-badge {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: #f5e3a3;
+      color: #7a6221;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    
     <!-- TIPURI DE EVENIMENTE -->
     <section id="evenimente">
       <h2>Tipuri de evenimente</h2>
@@ -803,8 +940,6 @@ Accesorii amuzante pentru fotografii – mustăți, ochelari, pălării, pancart
         <img src="images/imagine20.jpg" alt="Selfie Props 5">
     </div>
 </section>
-
-
 
     <!-- MASCOTA -->
     <section id="mascota">
@@ -1095,4 +1230,5 @@ Accesorii amuzante pentru fotografii – mustăți, ochelari, pălării, pancart
   </footer>
 </body>
 </html>
+
 
