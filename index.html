@@ -132,21 +132,20 @@
   text-align: center;
   color: #ffffff;
   overflow: hidden;
-  /* ↓ AICI pui imaginea ta */
-  background-image: url("hero_section.png");
+  background-image: url("images/hero-golden-moments.jpg"); /* numele fișierului tău */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Stratul ușor de gradient pentru a crește lizibilitatea textului */
 .hero-gm-overlay {
   position: absolute;
   inset: 0;
+  /* overlay MAI FIN, ca să se vadă bine textul din imagine */
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.25),
-    rgba(0, 0, 0, 0.45)
+    rgba(0, 0, 0, 0.10),
+    rgba(0, 0, 0, 0.25)
   );
   z-index: 0;
 }
@@ -154,27 +153,8 @@
 .hero-gm-inner {
   position: relative;
   z-index: 1;
-  padding: 4rem 1.5rem;
+  padding: 4rem 1.5rem 3rem;
   max-width: 900px;
-}
-
-/* Titlu & slogan */
-.hero-gm-title {
-  font-family: "Times New Roman", "Cormorant Garamond", serif;
-  font-size: clamp(2.4rem, 3.4vw, 3.1rem);
-  letter-spacing: 0.08em;
-  margin: 0 0 0.75rem;
-  text-transform: uppercase;
-  color: #f9d66b; /* aur deschis */
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
-}
-
-.hero-gm-tagline {
-  font-family: "Georgia", "Playfair Display", serif;
-  font-style: italic;
-  font-size: clamp(1.4rem, 2.1vw, 1.7rem);
-  margin: 0 0 1.8rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
 /* Butoane */
@@ -224,6 +204,33 @@
   background: rgba(255, 255, 255, 0.22);
   color: #ffffff;
   transform: translateY(-2px);
+}
+
+/* Text mic sub butoane */
+.hero-gm-subtext {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 0.98rem;
+  max-width: 620px;
+  margin: 0 auto;
+  color: #f5f5f5;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-gm {
+    min-height: 70vh;
+    background-position: center top;
+  }
+
+  .hero-gm-inner {
+    padding: 3rem 1.25rem 2.5rem;
+  }
+
+  .gm-btn {
+    width: 100%;
+    max-width: 260px;
+  }
 }
 
 /* Text mic sub butoane */
@@ -981,12 +988,9 @@
 
   <main>
     <!-- HERO -->
-       <section id="hero-golden-moments" class="hero-gm">
+<section id="hero-golden-moments" class="hero-gm">
   <div class="hero-gm-overlay"></div>
   <div class="hero-gm-inner">
-    <h1 class="hero-gm-title">GOLDEN MOMENTS</h1>
-    <p class="hero-gm-tagline">Evenimente perfecte, momente memorabile</p>
-
     <div class="hero-gm-buttons">
       <a href="#contact" class="gm-btn gm-btn-primary">Solicită o ofertă</a>
       <a href="#servicii" class="gm-btn gm-btn-secondary">Vezi serviciile noastre</a>
@@ -1632,6 +1636,7 @@ Accesorii amuzante pentru fotografii – mustăți, ochelari, pălării, pancart
   </footer>
 </body>
 </html>
+
 
 
 
