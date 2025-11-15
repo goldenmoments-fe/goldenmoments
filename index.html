@@ -630,15 +630,99 @@
       color: #777;
     }
 
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.8rem;
-      color: #777;
+       footer {
       border-top: 1px solid #efe4c8;
       background: #fffaf0;
+      margin-top: 40px;
     }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 20px 10px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: 20px;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo {
+      height: 54px;
+      width: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .footer-brand-name {
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      color: var(--gold);
+    }
+
+    .footer-brand-slogan {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: #7a6221;
+    }
+
+    .footer-col h4 {
+      margin: 0 0 6px;
+      font-size: 0.9rem;
+      color: #7a6221;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .footer-col p {
+      margin: 3px 0;
+      line-height: 1.4;
+    }
+
+    .footer-col a {
+      display: block;
+      text-decoration: none;
+      color: #555;
+      font-size: 0.82rem;
+      margin: 2px 0;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #777;
+      padding: 8px 10px 14px;
+      border-top: 1px solid #f0e3c9;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 750px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-brand {
+        justify-content: center;
+      }
+
+      .footer-col a {
+        display: inline-block;
+        margin: 2px 6px;
+      }
+    }
+
 
     @media (max-width: 750px) {
       .hero,
@@ -1294,10 +1378,43 @@ Accesorii amuzante pentru fotografii – mustăți, ochelari, pălării, pancart
   </main>
 
   <footer>
-    GOLDEN MOMENTS – firmă de exercițiu · „Evenimente perfecte, momente memorabile.”
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="sigla.png" alt="Golden Moments logo" class="footer-logo" />
+        <div>
+          <div class="footer-brand-name">GOLDEN MOMENTS</div>
+          <div class="footer-brand-slogan">”Evenimente perfecte, momente memorabile”</div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Linkuri utile</h4>
+        <a href="#servicii">Servicii</a>
+        <a href="#pachete">Pachete</a>
+        <a href="#galerie">Galerie foto</a>
+        <a href="#rezervari">Rezervări</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Colegiul Tehnologic ”Grigore Cerchez”</p>
+        <p>Calea Șerban Vodă nr. 280,<br>Sector 5, București</p>
+        <p>
+          E-mail:
+          <a href="mailto:fe.goldenmoments@gmail.com">fe.goldenmoments@gmail.com</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      Firmă de exercițiu – proiect educațional. Nu se efectuează vânzări reale.
+    </div>
   </footer>
 </body>
 </html>
+
+
 
 
 
