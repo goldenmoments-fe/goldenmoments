@@ -1,368 +1,695 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Golden Moments – Crăciun & Revelion</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Golden Moments – Sărbători de poveste</title>
 
-  <!-- Dacă ai style.css, îl poți păstra pentru fonturi / culori globale -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    /* === PAGINĂ SPECIALĂ DE SĂRBĂTORI === */
-
+    /* BAZĂ */
     body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 0;
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      color: #fff;
-      background: radial-gradient(circle at top, #3b1430 0%, #050814 55%, #020308 100%);
+      color: #2f2a24;
+      background: radial-gradient(circle at top, #fff7ea 0, #f9efe2 40%, #f3e3d5 100%);
+      min-height: 100vh;
+      position: relative;
       overflow-x: hidden;
     }
 
-    .snow-layer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.25;
-      background-image: radial-gradient(#ffffff 1px, transparent 1px);
-      background-size: 3px 3px;
-      animation: snowfall 40s linear infinite;
-      z-index: 1;
+    h1, h2, h3 {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      letter-spacing: 0.04em;
     }
 
-    @keyframes snowfall {
-      0% { transform: translateY(-10px); }
-      100% { transform: translateY(40px); }
+    a {
+      text-decoration: none;
     }
 
-    .festive-lights {
+    /* NAVBAR */
+    .navbar-brand {
+      font-family: "Playfair Display", serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 1rem;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .navbar .nav-link {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .btn-gold-outline {
+      border-radius: 999px;
+      border: 1px solid #c5a159;
+      color: #8a6a29;
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .btn-gold-outline:hover {
+      background: #c5a159;
+      color: #fff;
+    }
+
+    /* FULGI DE NEA */
+    .snowflakes {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 70px;
-      background-image:
-        radial-gradient(circle at 5% 50%, #ff4d4d 0 8px, transparent 9px),
-        radial-gradient(circle at 20% 50%, #ffd86b 0 8px, transparent 9px),
-        radial-gradient(circle at 35% 50%, #7fffd4 0 8px, transparent 9px),
-        radial-gradient(circle at 50% 50%, #ff9af5 0 8px, transparent 9px),
-        radial-gradient(circle at 65% 50%, #6be3ff 0 8px, transparent 9px),
-        radial-gradient(circle at 80% 50%, #ffb347 0 8px, transparent 9px),
-        radial-gradient(circle at 95% 50%, #ffffff 0 8px, transparent 9px);
-      background-repeat: no-repeat;
-      background-size: 120px 70px;
-      animation: lights-wave 2.8s ease-in-out infinite alternate;
-      z-index: 3;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+      overflow: hidden;
     }
 
-    @keyframes lights-wave {
-      0% { filter: brightness(0.8); transform: translateY(0); }
-      100% { filter: brightness(1.3); transform: translateY(4px); }
+    .snowflake {
+      position: absolute;
+      top: -10%;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.1rem;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
     }
 
-    .winter-hero {
+    @keyframes fall {
+      0% {
+        transform: translate3d(0, -10%, 0) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 1; }
+      100% {
+        transform: translate3d(40px, 110vh, 0) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* LUMINIȚE */
+    .lights-row {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 24px;
       position: relative;
       z-index: 2;
-      padding: 110px 20px 60px;
+    }
+
+    .light-bulb {
+      width: 16px;
+      height: 24px;
+      border-radius: 999px;
+      background: #ffd86b;
+      box-shadow: 0 0 10px rgba(255, 218, 120, 0.9);
+      position: relative;
+      animation: twinkle 1.8s infinite ease-in-out;
+    }
+
+    .light-bulb::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 5px;
+      border-radius: 4px;
+      background: #7f6850;
+    }
+
+    .light-bulb:nth-child(3n + 1) {
+      background: #ffb3c6;
+      box-shadow: 0 0 12px rgba(255, 179, 198, 0.9);
+      animation-delay: 0.2s;
+    }
+    .light-bulb:nth-child(3n + 2) {
+      background: #b3e6ff;
+      box-shadow: 0 0 12px rgba(179, 230, 255, 0.9);
+      animation-delay: 0.6s;
+    }
+    .light-bulb:nth-child(3n + 3) {
+      background: #bde8b1;
+      box-shadow: 0 0 12px rgba(189, 232, 177, 0.9);
+      animation-delay: 1s;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+      50% { transform: translateY(2px) scale(1.06); opacity: 1; }
+    }
+
+    /* HERO SĂRBĂTORI */
+    .hero-sarbatori {
+      position: relative;
+      z-index: 10;
+      padding: 110px 20px 70px;
       text-align: center;
     }
 
-    .winter-hero h1 {
-      font-size: clamp(2.4rem, 4vw, 3rem);
-      color: #ffd86b;
-      text-shadow: 0 0 18px rgba(255, 215, 128, 0.9);
-      margin-bottom: 10px;
+    .hero-inner {
+      max-width: 930px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 32px;
+      box-shadow:
+        0 18px 40px rgba(91, 64, 26, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.6);
+      padding: 34px 22px 40px;
+      border: 1px solid rgba(214, 184, 115, 0.8);
+      position: relative;
+      overflow: hidden;
     }
 
-    .winter-hero p {
-      max-width: 650px;
-      margin: 0 auto 24px;
-      font-size: 1.02rem;
-      color: #f6f1ff;
+    .hero-inner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(255, 238, 209, 0.9), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+      pointer-events: none;
     }
 
-    .finny-festiv {
-      width: 200px;
-      max-width: 55vw;
-      filter: drop-shadow(0 0 22px rgba(255, 215, 0, 0.8));
-      margin-bottom: 16px;
-      border-radius: 50%;
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
+      color: #a07419;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: #6a5a4b;
+      max-width: 640px;
+      margin: 0 auto 18px;
     }
 
     .hero-badge {
-      display: inline-block;
-      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 4px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      font-size: 0.8rem;
+      background: #fbeed3;
+      color: #a07419;
       text-transform: uppercase;
-      letter-spacing: 0.13em;
-      color: #ffe6a6;
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    .btn-hero {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 12px 26px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #ffd86b, #ff9f43);
-      color: #3d2300;
-      font-weight: 700;
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-    }
-
-    .btn-hero:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-    }
-
-    .section {
+      letter-spacing: 0.12em;
+      font-size: 0.7rem;
+      margin-bottom: 14px;
       position: relative;
       z-index: 2;
-      padding: 10px 18px 30px;
-      max-width: 1100px;
-      margin: 0 auto;
     }
 
-    .section h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      color: #ffe39a;
-      margin-bottom: 10px;
-    }
-
-    .section p.section-intro {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 25px;
-      color: #f0e3ff;
-      font-size: 0.98rem;
-    }
-
-    .pachete-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .card-pachet {
-      background: radial-gradient(circle at top, rgba(255,255,255,0.08), rgba(0,0,0,0.9));
-      border-radius: 18px;
-      padding: 18px 16px 16px;
-      border: 1px solid rgba(255, 215, 128, 0.6);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    }
-
-    .card-pachet h3 {
-      margin: 0 0 4px;
-      font-size: 1.2rem;
-      color: #ffe7aa;
-    }
-
-    .card-pachet .tagline {
-      font-size: 0.86rem;
-      color: #f8d1ff;
-      margin-bottom: 10px;
-    }
-
-    .card-pachet ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .hero-badge span {
       font-size: 0.9rem;
     }
 
-    .card-pachet ul li {
-      margin: 4px 0;
+    .hero-finny {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 18px;
+    }
+
+    .hero-finny img {
+      max-width: 210px;
+      width: 50%;
+      height: auto;
+      filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.25));
+    }
+
+    .hero-finny-glow {
+      position: absolute;
+      inset: auto;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -40%);
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 218, 120, 0.65), transparent 65%);
+      filter: blur(4px);
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    .hero-buttons {
+      margin-top: 10px;
       display: flex;
-      gap: 6px;
-      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
     }
 
-    .card-pachet ul li::before {
-      content: "•";
-      color: #ffd86b;
-      margin-top: 1px;
+    .btn-hero-primary {
+      border-radius: 999px;
+      padding: 10px 22px;
+      border: none;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: linear-gradient(135deg, #f5cf7d, #e0a63b);
+      color: #35230e;
+      box-shadow: 0 10px 20px rgba(157, 111, 27, 0.35);
     }
 
-    .card-ribbon {
-      display: inline-block;
+    .btn-hero-primary:hover {
+      background: linear-gradient(135deg, #ffd98c, #e9b453);
+      color: #3a2610;
+      transform: translateY(-1px);
+    }
+
+    .btn-hero-secondary {
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      border: 1px solid rgba(160, 116, 25, 0.5);
+      background: rgba(255, 255, 255, 0.9);
+      color: #6b5531;
+    }
+
+    .btn-hero-secondary:hover {
+      background: #f5ecda;
+      color: #4f3b1f;
+    }
+
+    /* PACHETE SPECIALE SĂRBĂTORI */
+    #pachete-sarbatori {
+      position: relative;
+      z-index: 10;
+      padding: 10px 0 60px;
+    }
+
+    #pachete-sarbatori h2 {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.95rem;
+      color: #a07419;
       margin-bottom: 6px;
+    }
+
+    .pachete-intro {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 26px;
+      font-size: 0.96rem;
+      color: #5f4d3b;
+    }
+
+    .pachete-intro strong {
+      color: #a07419;
+    }
+
+    .package-card {
+      border-radius: 26px;
+      border: 1px solid rgba(199, 166, 94, 0.7);
+      background: rgba(255, 255, 255, 0.96);
+      padding: 20px 20px 22px;
+      height: 100%;
+      box-shadow: 0 12px 28px rgba(84, 60, 26, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .package-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.76rem;
+      color: #b0892a;
+      margin-bottom: 4px;
+    }
+
+    .package-name {
+      font-size: 1.12rem;
+      margin-bottom: 4px;
+      color: #3e2c17;
+    }
+
+    .package-tagline {
+      font-size: 0.9rem;
+      color: #7c6a56;
+      margin-bottom: 10px;
+    }
+
+    .package-price {
+      font-weight: 700;
+      color: #b05a2f;
+      font-size: 1.02rem;
+      margin-bottom: 10px;
+    }
+
+    .package-features {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      color: #4b3a29;
+    }
+
+    .package-features li {
+      margin: 3px 0;
+      padding-left: 0;
+    }
+
+    .package-features li::before {
+      content: "• ";
+      color: #c9a13d;
+      margin-right: 3px;
+      font-weight: 700;
+    }
+
+    .package-badge {
+      position: absolute;
+      top: 12px;
+      right: 14px;
       padding: 3px 10px;
       border-radius: 999px;
-      font-size: 0.72rem;
+      background: #fbe0aa;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7a4a1a;
+      font-weight: 700;
+    }
+
+    .package-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: #7a6954;
+    }
+
+    .package-footer small {
+      font-size: 0.78rem;
+    }
+
+    .btn-mini {
+      border-radius: 999px;
+      border: 1px solid rgba(160, 116, 25, 0.4);
+      background: #fffdf9;
+      padding: 6px 12px;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.13em;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 215, 128, 0.7);
-      color: #ffe7b5;
+      color: #6a4b24;
     }
 
-    .traditii-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-      margin-top: 10px;
+    .btn-mini:hover {
+      background: #f7ebd7;
     }
 
-    .trad-card {
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 16px;
-      padding: 14px 14px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+    /* BANDĂ FESTIVĂ */
+    .banner-festiv {
+      border-radius: 18px;
+      padding: 12px 18px;
+      background: linear-gradient(120deg, #b92d3b, #d6792e, #e8c264);
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 12px auto 0;
+      max-width: 880px;
       font-size: 0.9rem;
+      box-shadow: 0 10px 24px rgba(105, 43, 17, 0.35);
     }
 
-    .trad-card h3 {
-      margin: 0 0 6px;
-      color: #ffe7aa;
-      font-size: 1.02rem;
+    .banner-festiv strong {
+      font-weight: 700;
     }
 
-    .trad-card p {
-      margin: 0;
-      color: #f4eaff;
+    .banner-festiv .btn-banner {
+      border-radius: 999px;
+      padding: 8px 18px;
+      border: none;
+      background: #fff;
+      color: #a14218;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      box-shadow: 0 4px 10px rgba(52, 22, 9, 0.25);
     }
 
+    .banner-festiv .btn-banner:hover {
+      background: #fbe8d6;
+    }
+
+    /* FOOTER */
     footer {
-      position: relative;
-      z-index: 2;
       text-align: center;
-      padding: 18px 10px 30px;
-      font-size: 0.82rem;
-      color: #f4e9ff;
-      opacity: 0.85;
+      font-size: 0.8rem;
+      padding: 18px 10px 22px;
+      color: #7b6a5a;
     }
 
     footer a {
-      color: #ffd86b;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
+      color: #a07419;
       text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
     }
 
-    @media (max-width: 600px) {
-      .winter-hero {
-        padding-top: 95px;
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-inner {
+        padding: 26px 18px 30px;
+      }
+
+      .hero-finny img {
+        max-width: 190px;
+      }
+
+      .hero-finny-glow {
+        width: 220px;
+        height: 220px;
+      }
+
+      .banner-festiv {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .banner-festiv .btn-banner {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ninsoare + luminițe -->
-  <div class="snow-layer"></div>
-  <div class="festive-lights"></div>
+  <!-- Fulgi de nea -->
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake" style="left: 5%; animation-duration: 10s; animation-delay: 0s;">❄</div>
+    <div class="snowflake" style="left: 15%; animation-duration: 12s; animation-delay: 2s;">✦</div>
+    <div class="snowflake" style="left: 28%; animation-duration: 11s; animation-delay: 1s;">❅</div>
+    <div class="snowflake" style="left: 40%; animation-duration: 13s; animation-delay: 3s;">✧</div>
+    <div class="snowflake" style="left: 55%; animation-duration: 9s;  animation-delay: 0.5s;">❄</div>
+    <div class="snowflake" style="left: 68%; animation-duration: 14s; animation-delay: 2.5s;">✦</div>
+    <div class="snowflake" style="left: 80%; animation-duration: 10s; animation-delay: 1.5s;">❅</div>
+    <div class="snowflake" style="left: 93%; animation-duration: 12s; animation-delay: 0.8s;">✧</div>
+  </div>
 
-  <!-- HERO CU FINNY -->
-  <section class="winter-hero">
-    <div class="hero-badge">Pagina specială de sărbători</div>
-    <img src="finny_christmas.png" alt="Mascota Finny – Golden Moments" class="finny-festiv">
-    <h1>Crăciun &amp; Revelion cu Golden Moments</h1>
-    <p>
-      Finny veghează asupra fiecărui detaliu: de la bradul împodobit și decorurile
-      tradiționale, până la candy bar-urile colorate și ringul de dans plin de energie.
-    </p>
-    <a href="index.html#rezervari" class="btn-hero">Rezervă pachetul de sărbători</a>
-  </section>
-
-  <!-- PACHETE DE SĂRBĂTORI -->
-  <section class="section" id="pachete-sarbatori">
-    <h2>Pachete speciale de iarnă</h2>
-    <p class="section-intro">
-      Alege pachetul potrivit pentru atmosfera pe care ți-o dorești: tradițional, elegant
-      sau plin de artificii și lumini la trecerea dintre ani.
-    </p>
-
-    <div class="pachete-grid">
-      <article class="card-pachet">
-        <div class="card-ribbon">Crăciun tradițional</div>
-        <h3>Pachet &bdquo;Colind de Aur&rdquo;</h3>
-        <p class="tagline">Atmosferă caldă, cu miros de cozonac și brazi împodobiți.</p>
-        <ul>
-          <li>Decor în culori roșu–auriu, cu globuri și coronițe de brad.</li>
-          <li>Candy bar tematic cu turtă dulce, brioșe și bețe de scorțișoară.</li>
-          <li>Photo corner cu motive tradiționale românești.</li>
-          <li>Muzică de fundal cu colinde și luminițe calde.</li>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        GOLDEN MOMENTS
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navSarbatori"
+        aria-controls="navSarbatori"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navSarbatori">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#servicii">Servicii</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#pachete">Pachete</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#rezervari">Rezervări</a>
+          </li>
         </ul>
-      </article>
-
-      <article class="card-pachet">
-        <div class="card-ribbon">Crăciun modern</div>
-        <h3>Pachet &bdquo;Winter Wonderland&rdquo;</h3>
-        <p class="tagline">Alb, argintiu și accente de albastru pentru un look de poveste.</p>
-        <ul>
-          <li>Decor minimalist cu fulgi de zăpadă, ghirlande luminoase și sclipiri aurii.</li>
-          <li>Candy bar alb &amp; pastel cu macarons și mousse-uri fine.</li>
-          <li>Colț special pentru poze cu Finny și lumini LED.</li>
-          <li>Posibilitatea de a integra fântână de ciocolată albă.</li>
-        </ul>
-      </article>
-
-      <article class="card-pachet">
-        <div class="card-ribbon">Noaptea dintre ani</div>
-        <h3>Pachet &bdquo;Golden New Year&rdquo;</h3>
-        <p class="tagline">Revelion cu strălucire, confetti și artificii de interior.</p>
-        <ul>
-          <li>Decor glamour în negru–auriu, cu lumânări și sclipici.</li>
-          <li>Photo corner cu props-uri haioase pentru selfie-uri de grup.</li>
-          <li>Bar de șampanie mocktail pentru un toast festiv.</li>
-          <li>Programare rapidă prin formularul de rezervări Golden Moments.</li>
-        </ul>
-      </article>
+        <a href="index.html#rezervari" class="btn btn-gold-outline ms-lg-3">
+          Rezervă acum
+        </a>
+      </div>
     </div>
-  </section>
+  </nav>
 
-  <!-- MOTIVE TRADIȚIONALE & DECORURI -->
-  <section class="section" id="traditii">
-    <h2>Motive tradiționale &amp; decoruri colorate</h2>
-    <p class="section-intro">
-      Integram elemente tradiționale românești în decorul modern: ii stilizate, motive
-      populare, coronițe din brad natural și aranjamente cu mere roșii și scorțișoară.
-    </p>
+  <!-- HERO FINNY + LUMINIȚE -->
+  <header class="hero-sarbatori">
+    <div class="hero-inner">
+      <div class="lights-row">
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
+      </div>
 
-    <div class="traditii-grid">
-      <article class="trad-card">
-        <h3>Colț tradițional românesc</h3>
-        <p>
-          Ștergare cu motive populare, coșulețe cu nuci și mere, coronițe din crenguțe de
-          brad și lumânări parfumate – perfecte pentru poze de familie.
-        </p>
-      </article>
-      <article class="trad-card">
-        <h3>Decor de poveste pentru copii</h3>
-        <p>
-          Colț cu Moș Crăciun, reni, oameni de zăpadă și zone de joacă cu baloane colorate,
-          potrivite pentru serbări și petreceri tematice.
-        </p>
-      </article>
-      <article class="trad-card">
-        <h3>Revelion elegant</h3>
-        <p>
-          Mese cu fețe de masă satinate, scaune cu huse aurii, aranjamente florale albe și
-          perdele de lumini pentru un final de an spectaculos.
-        </p>
-      </article>
+      <div class="hero-badge">
+        <span>✨ Ofertă de sezon</span>
+        <span>Crăciun &amp; Revelion 2024–2025</span>
+      </div>
+
+      <h1 class="hero-title">Sărbători magice cu Golden Moments</h1>
+      <p class="hero-subtitle">
+        Finny, bufnița noastră norocoasă, te așteaptă să transformi petrecerea de <strong>Crăciun</strong> sau <strong>Revelion</strong> 
+        într-un moment de poveste, cu decoruri luminoase, candy bar festiv și colțuri foto instagramabile.
+      </p>
+
+      <div class="hero-finny">
+        <div class="hero-finny-glow"></div>
+        <!-- Schimbă numele fișierului dacă e altul (ex: finny-sarbatori.png) -->
+        <img src="finny-craciun.png" alt="Mascota Finny în stil de Crăciun" />
+      </div>
+
+      <div class="hero-buttons">
+        <a href="index.html#rezervari" class="btn btn-hero-primary">
+          Rezervă un eveniment de sărbători
+        </a>
+        <a href="index.html" class="btn btn-hero-secondary">
+          Înapoi la pagina principală
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PACHETE SPECIALE SĂRBĂTORI -->
+  <section id="pachete-sarbatori">
+    <div class="container">
+      <h2>Pachete speciale de sărbători</h2>
+      <p class="pachete-intro">
+        Alege unul dintre pachetele noastre tematice sau folosește-l ca punct de pornire pentru 
+        o ofertă personalizată. Toate pachetele includ <strong>planificare, decor festiv și coordonare în ziua evenimentului</strong>.
+      </p>
+
+      <div class="row g-4 packages">
+        <!-- Pachet Golden Christmas -->
+        <div class="col-md-4">
+          <div class="package-card">
+            <div class="package-badge">Popular</div>
+            <div class="package-label">Golden Christmas</div>
+            <h3 class="package-name">Pachet Crăciun Aurit</h3>
+            <p class="package-tagline">Atmosferă cozy, caldă, cu luminițe și decoruri elegante.</p>
+            <div class="package-price">Recomandat pentru: 30–80 invitați</div>
+            <ul class="package-features">
+              <li>Decor tematic de Crăciun (brazi, ghirlande, lumânări LED)</li>
+              <li>Candy bar festiv cu prăjituri de sezon</li>
+              <li>Photo corner cu props-uri haioase de Crăciun</li>
+              <li>Playlist de sărbători &amp; coordonare momente speciale</li>
+            </ul>
+            <div class="package-footer">
+              <small>Ideal pentru petreceri de firmă, clase sau familii.</small>
+              <a href="index.html#rezervari" class="btn-mini">Cere ofertă</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pachet Premium New Year's Eve -->
+        <div class="col-md-4">
+          <div class="package-card">
+            <div class="package-badge">Midnight</div>
+            <div class="package-label">Premium New Year</div>
+            <h3 class="package-name">Pachet Revelion Premium</h3>
+            <p class="package-tagline">Glow, confetti și energie pentru trecerea în noul an.</p>
+            <div class="package-price">Recomandat pentru: 40–120 invitați</div>
+            <ul class="package-features">
+              <li>Decor glam (auriu &amp; argintiu, baloane, panou foto luminous)</li>
+              <li>Candy bar &amp; mini sweet bar pentru miezul nopții</li>
+              <li>Colț dedicat pentru numărătoarea inversă și toast</li>
+              <li>Coordonare momente-cheie (foc de artificii indoor, tort, urări)</li>
+            </ul>
+            <div class="package-footer">
+              <small>Perfect pentru petreceri de firmă sau Revelion cu prietenii.</small>
+              <a href="index.html#rezervari" class="btn-mini">Rezervă</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pachet Winter Wonderland -->
+        <div class="col-md-4">
+          <div class="package-card">
+            <div class="package-badge">Kids &amp; Family</div>
+            <div class="package-label">Winter Wonderland</div>
+            <h3 class="package-name">Pachet Winter Wonderland</h3>
+            <p class="package-tagline">Lume de poveste pentru copii, cu Finny ghidul distracției.</p>
+            <div class="package-price">Recomandat pentru: 20–60 invitați</div>
+            <ul class="package-features">
+              <li>Decor alb &amp; bleu, fulgi de nea, cortine luminoase</li>
+              <li>Candy bar tematic și mini-colț de ciocolată caldă</li>
+              <li>Photo corner cu props pentru copii și familie</li>
+              <li>Jocuri &amp; activități coordonate (în funcție de vârstă)</li>
+            </ul>
+            <div class="package-footer">
+              <small>Recomandat pentru serbări școlare, grupe și familii.</small>
+              <a href="index.html#rezervari" class="btn-mini">Detalii</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner festiv sub pachete -->
+      <div class="banner-festiv mt-4">
+        <span>
+          ✨ <strong>Personalizăm fiecare pachet</strong> în funcție de locație, număr de invitați și buget. 
+          Spune-ne ce îți dorești, iar Finny se ocupă de restul.
+        </span>
+        <a href="index.html#rezervari" class="btn-banner">
+          Trimite o cerere de rezervare
+        </a>
+      </div>
     </div>
   </section>
 
   <footer>
-    &laquo;Înapoi la site-ul principal&raquo; –
-    <a href="index.html">Golden Moments</a>
+    <div>© Golden Moments – Firmă de exercițiu, proiect educațional.</div>
+    <div>Vizitează pagina principală: <a href="index.html">goldenmoments – evenimente perfecte, momente memorabile</a></div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
