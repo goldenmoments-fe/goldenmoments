@@ -120,103 +120,138 @@
       margin: 10px 0 0;
     }
 
-    /* HERO INTRO */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 20px;
-      align-items: center;
-      background: linear-gradient(
-        135deg,
-        #fffdf7 0%,
-        #fffaf0 40%,
-        #ffffff 100%
-      );
-    }
+   /* === HERO Golden Moments === */
 
-    .hero-logo {
-      text-align: center;
-    }
+.hero-gm {
+  position: relative;
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+  /* ↓ AICI pui imaginea ta */
+  background-image: url("hero_section.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-    .hero-logo img {
-      max-width: 260px;
-      width: 100%;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
-    }
+/* Stratul ușor de gradient pentru a crește lizibilitatea textului */
+.hero-gm-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.45)
+  );
+  z-index: 0;
+}
 
-    .hero-text h2 {
-      font-size: 1.8rem;
-      margin-top: 0;
-      color: var(--gold);
-    }
+.hero-gm-inner {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 1.5rem;
+  max-width: 900px;
+}
 
-    .hero-text p {
-      margin-top: 8px;
-    }
+/* Titlu & slogan */
+.hero-gm-title {
+  font-family: "Times New Roman", "Cormorant Garamond", serif;
+  font-size: clamp(2.4rem, 3.4vw, 3.1rem);
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  color: #f9d66b; /* aur deschis */
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
 
-    .pill {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: var(--gold-soft);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #7a6221;
-    }
+.hero-gm-tagline {
+  font-family: "Georgia", "Playfair Display", serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.1vw, 1.7rem);
+  margin: 0 0 1.8rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
 
-        .hero-buttons {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+/* Butoane */
+.hero-gm-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
 
-    .btn-hero-primary,
-    .btn-hero-secondary {
-      display: inline-block;
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      text-decoration: none;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.18s;
-    }
+.gm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
 
-    .btn-hero-primary {
-      background: linear-gradient(135deg, #d4af37, #f5d77a);
-      color: #fff;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-    }
+.gm-btn-primary {
+  background: #f2c347;
+  color: #3b2a14;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
 
-    .btn-hero-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
-    }
+.gm-btn-primary:hover {
+  background: #ffda6b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
 
-    .btn-hero-secondary {
-      background: #fffdf7;
-      color: #7a6221;
-      border-color: #e5c981;
-    }
+.gm-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(4px);
+}
 
-    .btn-hero-secondary:hover {
-      background: #fff7df;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
-    }
+.gm-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
 
-    @media (max-width: 750px) {
-      .hero-buttons {
-        justify-content: flex-start;
-      }
-    }
+/* Text mic sub butoane */
+.hero-gm-subtext {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 0.98rem;
+  max-width: 620px;
+  margin: 0 auto;
+  color: #f5f5f5;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .hero-gm {
+    min-height: 70vh;
+    background-position: center top;
+  }
+
+  .hero-gm-inner {
+    padding: 3rem 1.25rem;
+  }
+
+  .gm-btn {
+    width: 100%;
+    max-width: 260px;
+  }
+}
 
     /* GRID – CARDURI */
     .cards {
@@ -946,26 +981,22 @@
 
   <main>
     <!-- HERO -->
-       <section class="hero">
-      <div class="hero-text">
-        <h2>Evenimente perfecte, momente memorabile.</h2>
-        <p>
-          <strong>Golden Moments</strong> este o firmă de exercițiu
-          specializată în organizarea de evenimente premium – de la ceremonii
-          elegante până la conferințe, gale și lansări deosebite.
-        </p>
-        <span class="pill">Firmă de exercițiu · Organizare evenimente</span>
+       <section id="hero-golden-moments" class="hero-gm">
+  <div class="hero-gm-overlay"></div>
+  <div class="hero-gm-inner">
+    <h1 class="hero-gm-title">GOLDEN MOMENTS</h1>
+    <p class="hero-gm-tagline">Evenimente perfecte, momente memorabile</p>
 
-        <div class="hero-buttons">
-          <a href="#rezervari" class="btn-hero-primary">Rezervă un eveniment</a>
-          <a href="sarbatori.html" class="btn-hero-secondary">Crăciun &amp; Revelion</a>
-        </div>
-      </div>
-      <div class="hero-logo">
-        <img src="sigla.png" alt="Golden Moments" />
-      </div>
-    </section>
+    <div class="hero-gm-buttons">
+      <a href="#contact" class="gm-btn gm-btn-primary">Solicită o ofertă</a>
+      <a href="#servicii" class="gm-btn gm-btn-secondary">Vezi serviciile noastre</a>
+    </div>
 
+    <p class="hero-gm-subtext">
+      Organizăm momente unice prin creativitate, eleganță și profesionalism.
+    </p>
+  </div>
+</section>
 
     <!-- DESPRE -->
     <section id="despre">
@@ -1601,6 +1632,7 @@ Accesorii amuzante pentru fotografii – mustăți, ochelari, pălării, pancart
   </footer>
 </body>
 </html>
+
 
 
 
